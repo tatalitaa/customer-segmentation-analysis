@@ -1,7 +1,14 @@
 # Customer Segmentation Analysis (RFM)
 
 ## Overview
-This project analyzes customer transaction data using RFM (Recency, Frequency, Monetary) to identify customer segments and generate business insights.
+This project analyzes e-commerce transaction data to identify high-value customers and support data-driven marketing strategies using RFM (Recency, Frequency, Monetary) segmentation.
+
+## Business Problem
+Many companies struggle to:
+- Identify their most valuable customers
+- Understand customer purchasing behavior
+- Design effective retention and marketing strategies
+Without proper segmentation, businesses risk treating all customers the same, leading to inefficient marketing and missed revenue opportunities.
 
 ## Objectives
 - Identify high-value and loyal customers
@@ -9,14 +16,52 @@ This project analyzes customer transaction data using RFM (Recency, Frequency, M
 - Segment customers based on behavior
 - Provide actionable business recommendations
 
-## Tools
-- Python (Pandas, Matplotlib, Seaborn)
-- Jupyter Notebook / Google Colab
+## Dataset
+This project uses the Online Retail Dataset available on Kaggle:
+🔗 https://www.kaggle.com/datasets/ulrikthygepedersen/online-retail-dataset
 
-## Key Insights
-- Customer spending is highly skewed, where a small group of customers contributes the majority of total revenue (Pareto principle)
-- Customers with higher purchase frequency tend to generate significantly higher revenue
-- The majority of customers are low-frequency buyers, indicating opportunities for engagement and retention strategies
+### Dataset Description
+This dataset contains transactional data from a UK-based online retail store, covering transactions between December 2010 and December 2011.
+
+It includes information such as:
+- InvoiceNo → Unique transaction ID
+- StockCode → Product code
+- Description → Product name
+- Quantity → Number of items purchased
+- InvoiceDate → Transaction date and time
+- UnitPrice → Price per unit
+- CustomerID → Unique customer identifier
+- Country → Customer location
+
+### Dataset Description
+- ~500,000+ transaction records
+- E-commerce transaction data
+- Suitable for customer segmentation and behavioral analysis
+
+## Methodology
+1. Data Cleaning
+   - Removed missing CustomerID
+   - Filtered invalid values (Quantity ≤ 0, UnitPrice ≤ 0)
+   - Converted InvoiceDate to datetime format
+2. Feature Engineering
+   - Revenue = Quantity × UnitPrice
+3. RFM Calculation
+   - Recency → Days since last purchase
+   - Frequency → Number of transactions
+   - Monetary → Total spending
+4. RFM Scoring
+   - Customers segmented into quartiles (1–4)
+   - Combined into RFM Score (e.g., 444 = best customers)
+6. Customer Segmentation
+🟢 Best Customer
+🔵 Loyal Customer
+🟡 Big Spender
+⚪ Regular Customer
+
+## Key Results
+- Customer spending is highly skewed → a small group contributes most of the revenue
+- High-frequency customers generate significantly higher revenue
+- Majority of customers are low-frequency buyers → strong growth opportunity
 
 
 ## Visualizations
@@ -27,17 +72,11 @@ This project analyzes customer transaction data using RFM (Recency, Frequency, M
 **Insight:**
 Revenue distribution is highly right-skewed, indicating that a small number of customers contribute most of the revenue.
 
-**Business Impact:**
-Retention strategies should prioritize high-value customers, as they are the main drivers of business performance.
-
 ### Frequency vs Revenue
 ![Frequency](images/freq_vs_revenue.png)
 
 **Insight:**
 There is a positive relationship between purchase frequency and revenue. Customers with higher frequency tend to generate higher total revenue.
-
-**Business Impact:**
-Increasing customer purchase frequency through loyalty programs or targeted promotions can significantly improve revenue.
 
 ### Customer Segmentation
 ![Segment](images/segment_dist.png)
@@ -45,21 +84,24 @@ Increasing customer purchase frequency through loyalty programs or targeted prom
 **Insight:**
 Most customers fall into the Regular segment, while a smaller group of high-value customers (Best Customers and Big Spenders) contributes significantly to overall revenue.
 
-**Business Impact:**
-Segment-based strategies can be applied:
-- Retain and reward high-value customers
-- Upsell to loyal customers
-- Re-engage low-frequency customers
+## Key Insights
+- A small percentage of customers drives the majority of revenue (Pareto principle)
+- Purchase frequency strongly influences customer value
+- Customer behavior varies significantly across segments
   
 ## Business Recommendations
-- Prioritize retention strategies for high-value customers (VIP treatment, exclusive offers)
-- Implement loyalty programs to increase purchase frequency
-- Design targeted marketing campaigns for different customer segments
-- Re-engage inactive customers through personalized promotions
+- Prioritize retention of high-value customers (VIP programs, exclusive offers)
+- Increase purchase frequency through loyalty programs
+- Target low-frequency customers with personalized campaigns
+- Re-engage inactive customers using promotions and incentives
 
-## Dataset
-Online Retail Dataset (E-commerce transaction data)
-
+## Tools & Technologies
+- Python
+- Pandas
+- Matplotlib
+- Seaborn
+- Jupyter Notebook / Google Colab
+  
 ## Conclusion
-This project demonstrates how customer segmentation using RFM analysis can provide valuable insights into customer behavior and support strategic business decisions. By leveraging data, companies can better target their customers and optimize revenue growth.
+RFM segmentation provides a simple yet powerful approach to understanding customer behavior. By leveraging transactional data, businesses can implement targeted strategies to improve customer engagement and drive revenue growth.
 
