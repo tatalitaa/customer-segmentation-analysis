@@ -1,13 +1,16 @@
 # Customer Segmentation Analysis (RFM)
 
 ## Overview
-This project analyzes e-commerce transaction data to identify high-value customers and support data-driven marketing strategies using RFM (Recency, Frequency, Monetary) segmentation.
+This project analyzes e-commerce transaction data to identify high-value customers and support data-driven marketing strategies using the **RFM (Recency, Frequency, Monetary) model**.
+
+The goal is to transform raw transaction data into **actionable customer insights** that can improve retention, targeting, and revenue growth.
 
 ## Business Problem
 Many companies struggle to:
 - Identify their most valuable customers
 - Understand customer purchasing behavior
 - Design effective retention and marketing strategies
+  
 Without proper segmentation, businesses risk treating all customers the same, leading to inefficient marketing and missed revenue opportunities.
 
 ## Objectives
@@ -24,14 +27,14 @@ This project uses the Online Retail Dataset available on Kaggle:
 This dataset contains transactional data from a UK-based online retail store, covering transactions between December 2010 and December 2011.
 
 It includes information such as:
-- InvoiceNo → Unique transaction ID
-- StockCode → Product code
-- Description → Product name
-- Quantity → Number of items purchased
-- InvoiceDate → Transaction date and time
-- UnitPrice → Price per unit
-- CustomerID → Unique customer identifier
-- Country → Customer location
+- `InvoiceNo` → Transaction ID  
+- `StockCode` → Product code  
+- `Description` → Product name  
+- `Quantity` → Number of items  
+- `InvoiceDate` → Transaction timestamp  
+- `UnitPrice` → Price per unit  
+- `CustomerID` → Unique customer ID  
+- `Country` → Customer location
 
 ### Dataset Description
 - ~500,000+ transaction records
@@ -40,9 +43,9 @@ It includes information such as:
 
 ## Methodology
 1. Data Cleaning
-   - Removed missing CustomerID
-   - Filtered invalid values (Quantity ≤ 0, UnitPrice ≤ 0)
-   - Converted InvoiceDate to datetime format
+   - Removed missing `CustomerID`
+   - Filtered invalid values (`Quantity <= 0`, `UnitPrice <= 0`)
+   - Converted `InvoiceDate` to datetime format  
 2. Feature Engineering
    - Revenue = Quantity × UnitPrice
 3. RFM Calculation
@@ -53,36 +56,35 @@ It includes information such as:
    - Customers segmented into quartiles (1–4)
    - Combined into RFM Score (e.g., 444 = best customers)
 6. Customer Segmentation
-- 🔵 Big Spender 
-- 🟠 Best Customer 
-- 🟢 Regular Customer
-- 🔴 Loyal Customer 
+   - 🟢 **Best Customers** → High value, frequent, recent buyers
+   - 🔵 **Loyal Customers** → Frequent buyers
+   - 🟡 **Big Spenders** → High spending customers
+   - ⚫ **Regular Customers** → Low engagement  
 
 ## Key Results
-- Customer spending is highly skewed → a small group contributes most of the revenue
-- High-frequency customers generate significantly higher revenue
-- Majority of customers are low-frequency buyers → strong growth opportunity
-
+- Revenue distribution is **highly skewed** → small group contributes majority of revenue  
+- High-frequency customers generate significantly higher revenue  
+- Majority of customers are low-frequency buyers → growth opportunity 
 
 ## Visualizations
+### 1. Customer Segmentation Distribution
 
-### Revenue Distribution
-![Revenue](images/revenue_dist.png)
 
-**Insight:**
-Revenue distribution is highly right-skewed, indicating that a small number of customers contribute most of the revenue.
+**Insight:** Most customers fall into the *Regular* segment, while a smaller group drives most revenue.
 
-### Frequency vs Revenue
-![Frequency](images/freq_vs_revenue.png)
+---
 
-**Insight:**
-There is a positive relationship between purchase frequency and revenue. Customers with higher frequency tend to generate higher total revenue.
+### 2. Frequency vs Revenue
+<img width="856" height="554" alt="download (1)" src="https://github.com/user-attachments/assets/ed5771cc-e921-421e-958b-6e3a321bcb0c" />
 
-### Customer Segmentation
-![Segment](images/segment_dist.png)
+**Insight:** Higher purchase frequency generally leads to higher revenue.
 
-**Insight:**
-Most customers fall into the Regular segment, while a smaller group of high-value customers (Best Customers and Big Spenders) contributes significantly to overall revenue.
+---
+
+### 3. Revenue by Segment
+<img width="856" height="554" alt="download (2)" src="https://github.com/user-attachments/assets/189aff31-c155-4783-87fb-02253e9a8ecc" />
+
+**Insight:** Best Customers dominate revenue contribution across all segments.
 
 ## Key Insights
 - A small percentage of customers drives the majority of revenue (Pareto principle)
@@ -105,3 +107,6 @@ Most customers fall into the Regular segment, while a smaller group of high-valu
 ## Conclusion
 RFM segmentation provides a simple yet powerful approach to understanding customer behavior. By leveraging transactional data, businesses can implement targeted strategies to improve customer engagement and drive revenue growth.
 
+## 👩‍💻 Author
+**Talita Sri Indrayuni**  
+Aspiring Data Analyst | Data Enthusiast 
